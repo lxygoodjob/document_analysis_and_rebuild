@@ -7,7 +7,6 @@ from utils.docx_file_process import docx_unzip_and_parser, get_docx_text_per_par
 from utils.pptx_file_process import pptx_unzip_and_parser, get_pptx_text_per_para, parser_pptx_trans_result
 from utils.fileconvert import convert_doc_to_docx, convert_xls_to_xlsx, convert_ppt_to_pptx
 from utils.xlsx_file_process import xlsx_parser, parser_xlsx_trans_result
-from utils.ocr_file_process import ocr_file_parser
 from utils.text_file_process import split_func
 
 import base64
@@ -69,8 +68,7 @@ def doc_parser():
             unzip_file_dict, unzip_path = pptx_unzip_and_parser(input_file)
             fileuuid, result = get_pptx_text_per_para(unzip_file_dict, unzip_path, os.path.join(save_folder, uid +'.json'))
         else:
-            file_type = 'ocr_file'
-            result = ocr_file_parser(input_file)
+            result = None
     except:
         result = None
 
